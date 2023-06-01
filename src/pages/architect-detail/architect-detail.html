@@ -1,0 +1,184 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{'Architect Detail' | translate}}</ion-title>
+        
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding class="">
+    <div class="profile-container">
+              
+  
+  
+            <div class="user-profile">
+              <div class="dp">
+                  <div class="dp-hidden">
+                      <img src="assets/imgs/man.svg" *ngIf="karigar_detail.url_profile ==''">
+                      <img src="{{karigar_detail.url_profile}}" *ngIf="karigar_detail.url_profile" (click)="viewProfiePic()">
+                  </div>
+                  <a class="cmra-btn"><i class="material-icons" (click)="openeditprofile()">camera_alt</i></a>
+              </div>
+              <h2>{{karigar_detail.full_name |titlecase}}</h2>
+              <p class="{{karigar_detail.status}}">
+                  {{karigar_detail.status}}
+                  <i class="material-icons Verified " *ngIf="karigar_detail.status =='Verified'">verified_user </i>
+                  <i class="material-icons Pending " *ngIf="karigar_detail.status =='Pending'">update</i>
+                  <i class="material-icons Suspect " *ngIf="karigar_detail.status =='Suspect'">help</i>
+                  <i class="material-icons Reject " *ngIf="karigar_detail.status =='Reject'">cancel</i>
+              </p>
+              
+              <button class="edit" (click)="updateProfile()"> <i class="material-icons">edit</i></button>
+              
+          </div>
+          
+          
+            <div class="profile-card" >
+                <div class="text-box" >
+                    <p>{{'Company Name' | translate}}.</p>
+                    <h6>{{karigar_detail.company_name  | titlecase}}</h6>
+                </div>
+              <div class="text-box" >
+                  <p>{{'Mobile No' | translate}}.</p>
+                  <h6>+91 {{karigar_detail.mobile_no ? karigar_detail.mobile_no : 'N/A'}} </h6>
+              </div>
+              <div class="text-box">
+                  <p>{{'Whats App Number' | translate}}</p>
+                  <h6>+91 {{karigar_detail.whatsapp_mobile_no ? karigar_detail.whatsapp_mobile_no : 'N/A'}}</h6>
+              </div>
+              <div class="text-box" >
+                  <p>{{'Date of Birth' | translate}}</p>
+                  <h6>{{(karigar_detail.dob !='') ? (karigar_detail.dob| date:'d MMM,y'):('N/A')}} </h6>
+              </div>
+              <div class="text-box" >
+                  <p>{{'Date of Anniversary' | translate}}</p>
+                        <h6>{{(karigar_detail.doa !='') ? (karigar_detail.doa| date:'d MMM,y'):('N/A')}} </h6>
+              </div>
+              <div class="text-box"  *ngIf="karigar_detail.email">
+                  <p>{{'Email ID' | translate}}</p>
+                  <h6>{{karigar_detail.email}}
+                  </h6>
+              </div>
+              <div class="text-box">
+                  <p>{{ 'Date of Birth' | translate}}</p>
+                  <h6>{{(karigar_detail.dob !='') ? (karigar_detail.dob| date:'d MMM,y'):('----')}}</h6>
+              </div>
+              <div class="text-box">
+                  <p>{{ 'Date of Anniversary' | translate}}</p>
+                  <h6>{{(karigar_detail.doa !='') ? (karigar_detail.doa| date:'d MMM,y'):('N/A')}}</h6>
+              </div>
+              <div class="text-box" >
+                  <p>{{'Address' | translate}}</p>
+                  <h6>{{karigar_detail.address |titlecase}} {{!karigar_detail.state ? 'N/A' :karigar_detail.state |titlecase}} {{!karigar_detail.district ? 'N/A' : ', '+karigar_detail.district |titlecase}} {{!karigar_detail.city ? 'N/A' : ', '+karigar_detail.city
+                      |titlecase}}
+                  </h6>
+              </div>
+  
+            </div>
+  
+  
+  
+  
+  
+        
+    
+  
+    <div class="profile-card dct_inf">
+    <div class="text-center">
+        <p>{{'Document Information' | translate}}</p>
+        <!-- <div class="little-edit">
+            <a *ngIf="edit1==''"><i class="material-icons" (click)="onUploadChange();edit1 = '1' ">edit</i></a>
+            <a *ngIf="edit1=='1'"><i class="material-icons" (click)="uploadDocImage(karigar_detail.document_image,karigar_detail.document_no)">save</i></a>
+        </div> -->
+    </div>
+    <div class="text-box">
+      <div class="doc-box">
+        <img src="{{karigar_detail.url_document_image == '' ? 'assets/imgs/adhar.png' :  uploadUrl+karigar_detail.url_document_image }}">
+       
+      </div>
+      <div class="doc-box">
+        <img src="{{karigar_detail.url_document_image_back == '' ? 'assets/imgs/adhar.png' :  uploadUrl+karigar_detail.url_document_image_back }}">
+
+      </div>
+  </div>
+      <div class="text-box">
+        <p>{{karigar_detail.document_type=='Adharcard'? 'Adhar card' : (karigar_detail.document_type=='PanCard' ? 'Pan Card' : 'Voter Card') }}</p>
+       
+        <h6>{{ karigar_detail.document_no}}</h6>
+      </div>
+  </div>
+    <div class="profile-card dct_inf">
+      <div class="text-center">
+        <p>{{'Pan Card Information' | translate}}</p>
+      </div>
+    <div class="text-box">
+      <div class="doc-box">
+      <img src="{{karigar_detail.url_pan_image == '' ? 'assets/imgs/adhar.png' :  uploadUrl+karigar_detail.url_pan_image }}">
+  </div>
+    </div>
+        <!-- <p>{{ karigar_detail.pancard_no}}</p> -->
+        <div class="text-box">
+          <p>{{'Pancard Number' | translate}}</p>
+          <h6>{{karigar_detail.pancard_no}}</h6>
+      </div>
+    </div>
+  
+  
+  
+    <div class="heading line mt32" >
+        <p >{{'Dealer Information' | translate}}</p>
+        <!-- <div class="little-edit">
+            <a *ngIf="edit==''"><i class="material-icons" (click)="edit = '1' ">edit</i></a>
+            <a *ngIf="edit=='1'"><i class="material-icons" (click)="editDealer()">save</i></a>
+        </div> -->
+    </div>
+    <div class="pr-after" >
+        <div class="profile-detail bdr-none p0">
+            <div class="deflex mt0">
+                <ul>
+                    <li class="wp100 front">
+                        <p>{{'Counter Name' | translate}}</p>
+                        
+                        <h6>{{ karigar_detail.dealer_company_name | titlecase}}</h6>
+  
+                    </li>
+                    <li class="bdr-top front">
+                        <p>{{'Contact Person' | translate}}</p>
+                        <h6>{{ karigar_detail.dealer_name | titlecase}}</h6>
+  
+                    </li>
+                    <li class="bdr-top bdr-left front" >
+                        <p>{{'Mobile No' | translate}}.</p>
+                              <h6>{{ karigar_detail.dealer_mobile_no}}</h6>
+  
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  
+   
+    <div class="heading line mt18">
+        <p>{{'Branch Information' | translate}}</p>
+    </div>
+  
+    <div class="pr-after" >
+      <div class="profile-detail bdr-none p0">
+          <div class="deflex mt0">
+              <ul>
+                  
+                  <li class="bdr-top wp100 front">
+                      <p>{{'Branch Name' | translate}}</p>
+                      <h6>{{karigar_detail.branch_name ? karigar_detail.branch_name : 'N/A'  | titlecase}}
+                      </h6>
+                  </li>
+                 
+                 
+              </ul>
+          </div>
+      </div>
+  </div>
+  
+  
+  </div>
+   
+   
+  </ion-content>

@@ -1,0 +1,38 @@
+page-architect-add {
+
+
+    .eror {
+        direction: rtl !important;
+        margin-right: 6px !important;
+    }
+
+    .invalid-feedback{
+		text-align: right;
+		color: #ff0000;
+		font-size: 12px;
+		background-color: #fff;
+        margin-right: 6px;
+
+	}
+
+    .profile-circle {
+        margin: 0 auto;
+        width: 65px;
+        height: 65px;
+        background: #d9ad0c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        border: 2px solid #fff;
+        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+        margin-bottom: 6px;
+        color: #fff;
+        
+        img{
+            height: 65px;
+            border-radius: 100%;
+            width: 100%;
+        }
+    }
+}

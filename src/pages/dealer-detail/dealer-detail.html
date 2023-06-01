@@ -1,0 +1,177 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title>{{'Carpenter Detail' | translate}}</ion-title>
+      <!-- <div class="header-icons">
+          <button ion-button class="cs-hdr-icons mr16" (click)="logout()">
+              <i class="material-icons">power_settings_new</i>
+          </button>
+      </div> -->
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="main-backgroung">
+  <div class="pr-after">
+      <div class="profile-detail">
+          <div class="pr-align">
+              <!-- <div class="pr-circle">
+                  <img src="assets/imgs/man.svg" *ngIf="karigar_detail.profile ==''">
+                  <img [src]="karigar_detail.profile" *ngIf="karigar_detail.profile" (click)="viewProfiePic()">
+                  <label> 
+                      <i class="material-icons" (click)="openeditprofile()">camera_alt</i>
+                  </label>
+              </div> -->
+              <div class="pr-tags {{karigar_detail.status}}">
+                  <!-- <button *ngIf="karigar_detail.user_type !='4'" class="edit_profile" (click)="updateProfile()"> <i class="material-icons">edit</i></button> -->
+                  <h2>{{!karigar_detail.full_name ? 'N/A' : karigar_detail.full_name |titlecase}} </h2>
+                  <!-- <div class="left-right mt10">
+                      <i class="material-icons" *ngIf="karigar_detail.status =='Verified'">check_circle</i>
+                      <i class="material-icons" *ngIf="karigar_detail.status =='Pending'">hourglass_full</i>
+                      <i class="material-icons" *ngIf="karigar_detail.status =='Suspect'">info</i>
+                      <i class="material-icons" *ngIf="karigar_detail.status =='Reject'">cancel</i>
+                      <p>{{karigar_detail.status=='Pending'? 'Pending For Verification':karigar_detail.status}}</p>
+                  </div> -->
+              </div>
+          </div>
+        
+          <div class="deflex mt0">
+              <ul>
+                 
+                
+                  <li class="bdr-top">
+                      <p>{{'Mobile No' | translate}}.</p>
+                      <h1><a href="tel:{{karigar_detail.mobile_no}}">+91 {{karigar_detail.mobile_no ? karigar_detail.mobile_no : 'N/A'}}</a> </h1>
+                  </li>
+                  <li class="bdr-left bdr-top">
+                      <p>{{'Whats App Number' | translate}}</p>
+                      <h1>+91 {{karigar_detail.whatsapp_mobile_no ? karigar_detail.whatsapp_mobile_no : 'N/A'}}</h1>
+                  </li>
+                  <li class="bdr-top">
+                      <p>{{'Date of Birth' | translate}}</p>
+                      <h1>{{(karigar_detail.dob !='') ? (karigar_detail.dob| date:'d MMM,y'):('N/A')}} </h1>
+                  </li>
+                  <li class="bdr-top bdr-left">
+                      <p>{{'Date of Anniversary' | translate}}</p>
+                      <h1>{{(karigar_detail.doa !='') ? (karigar_detail.doa| date:'d MMM,y'):('N/A')}} </h1>
+                  </li>
+                  <li class="bdr-top wp100">
+                      <p>{{'Email ID' | translate}}</p>
+                      <h1>{{karigar_detail.email}}
+                      </h1>
+                  </li>
+                 
+                  <li class="bdr-top wp100" >
+                    <p>{{'Company Name' | translate}}</p>
+                    <h1>{{karigar_detail.company_name |titlecase}}</h1>
+                </li>
+                <li class="bdr-top wp100">
+                  <p>{{ 'GST Number' | translate }}</p>
+                  <h1>{{karigar_detail.gst_number ? karigar_detail.gst_number:'N/A'}}</h1>
+              </li>
+              <li class="bdr-top wp100">
+                  <p>{{ 'Cheque Received' | translate }}</p>
+                  <h1>{{karigar_detail.cheque_received ? karigar_detail.cheque_received:'N/A'}}</h1>
+              </li>
+              <li class="bdr-top wp100">
+                  <p>{{ 'Sales Person Name' | translate }}</p>
+                  <h1>{{karigar_detail.sales_person_name ? karigar_detail.sales_person_name:'N/A'}}</h1>
+              </li>
+              <li class="bdr-top wp100">
+                  <p>{{ 'Trade License Number' | translate }}</p>
+                  <h1>{{karigar_detail.trade_license_no ? karigar_detail.trade_license_no:'N/A'}}</h1>
+              </li>
+                 
+                  <li class="bdr-top wp100">
+                      <p>{{'Address' | translate}}</p>
+                      <h1>{{karigar_detail.address |titlecase}} {{!karigar_detail.state ? 'N/A' :karigar_detail.state |titlecase}} {{!karigar_detail.district ? 'N/A' : ', '+karigar_detail.district |titlecase}} {{!karigar_detail.city ? 'N/A' : ', '+karigar_detail.city
+                          |titlecase}}
+                      </h1>
+                  </li>
+                 
+              </ul>
+          </div>
+      </div>
+  </div>
+  <div class="heading line mt18 mb16">
+      <p>{{'Document Information' | translate}}</p>
+      <!-- <div class="little-edit">
+          <a *ngIf="edit1==''"><i class="material-icons" (click)="onUploadChange();edit1 = '1' ">edit</i></a>
+          <a *ngIf="edit1=='1'"><i class="material-icons" (click)="uploadDocImage(karigar_detail.document_image,karigar_detail.document_no)">save</i></a>
+      </div> -->
+  </div>
+  <div class="adhar">
+      <img src="{{karigar_detail.url_document_image ? karigar_detail.url_document_image : 'assets/imgs/adhar.png'}}">
+      <img src="{{karigar_detail.url_document_image_back ? karigar_detail.url_document_image_back : 'assets/imgs/adhar.png'}}">
+      <p>{{karigar_detail.document_type=='Adharcard'? 'Adhar card' : (karigar_detail.document_type=='PanCard' ? 'Pan Card' : 'Voter Card') }}</p>
+     
+      <h1>{{ karigar_detail.document_no}}</h1>
+
+  </div>
+  <div class="heading line mt18 mb16">
+      <p>{{'Pan Card Information' | translate}}</p>
+  </div>
+  <div class="adhar">
+      <img src="{{karigar_detail.url_pan_image ? karigar_detail.url_pan_image : 'assets/imgs/adhar.png'}}">
+      <p>{{ karigar_detail.pancard_no}}</p>
+  </div>
+
+
+
+  <div class="heading line mt32" >
+      <p >{{'Dealer Information' | translate}}</p>
+      <!-- <div class="little-edit">
+          <a *ngIf="edit==''"><i class="material-icons" (click)="edit = '1' ">edit</i></a>
+          <a *ngIf="edit=='1'"><i class="material-icons" (click)="editDealer()">save</i></a>
+      </div> -->
+  </div>
+  <div class="pr-after" >
+      <div class="profile-detail bdr-none p0">
+          <div class="deflex mt0">
+              <ul>
+                  <li class="wp100">
+                      <p>{{'Counter Name' | translate}}</p>
+                      
+                      <h1>{{ karigar_detail.parent_counter_name}}</h1>
+
+                  </li>
+                  <li class="bdr-top">
+                      <p>{{'Contact Person' | translate}}</p>
+                      <h1>{{ karigar_detail.parent_counter_contact_person}}</h1>
+
+                  </li>
+                  <li class="bdr-top bdr-left">
+                      <p>{{'Mobile No' | translate}}.</p>
+                            <h1>{{ karigar_detail.parent_counter_mobile}}</h1>
+
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+ 
+  <div class="heading line mt18">
+      <p>{{'Branch Information' | translate}}</p>
+  </div>
+
+  <div class="data">
+      <table>
+          <tr>
+              <td>{{'Branch Name' | translate}}</td>
+              <th>{{karigar_detail.branch_name ? karigar_detail.branch_name : 'N/A' }} </th>
+          </tr>
+          <!-- <tr>
+              <td>{{'Sales Executive Name' | translate}}</td>
+              <th>{{karigar_detail.sales_executive_name ? karigar_detail.sales_executive_name : 'N/A'}}</th>
+          </tr>
+          <tr>
+              <td>{{'Sales Executive Mobile No' | translate}}</td>
+              <th>{{karigar_detail.sales_executive_mobile ? karigar_detail.sales_executive_mobile : 'N/A' }}</th>
+          </tr> -->
+      </table>
+  </div>
+
+
+
+
+ 
+ 
+</ion-content>
